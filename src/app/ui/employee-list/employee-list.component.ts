@@ -1,9 +1,7 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  ViewEncapsulation,
-} from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { EmployeeService } from '../../services/employee.service';
 import { EmployeeModel } from '../../model/employee.model';
 
 @Component({
@@ -13,5 +11,10 @@ import { EmployeeModel } from '../../model/employee.model';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EmployeeListComponent {
-  data$: Observable<EmployeeModel[] | null> = of(null);
+  title: string = 'Lista pracowników';
+  data$: Observable<EmployeeModel[] | null> = this._employeeService.getAll();
+  constructor(private _employeeService: EmployeeService) { }
+
+
 }
+

@@ -1,4 +1,4 @@
-<form [formGroup]="employeeForm" (ngSubmit)="onButtonCliked()">
+<form [formGroup]="employeeForm" (ngSubmit)="onButtonCliked(employeeForm.value)">
   <input type="text" formControlName="name" placeholder="Name">
   <input type="number" formControlName="age" placeholder="Age">
   <input type="number" formControlName="salary" placeholder="Salary">
@@ -6,8 +6,8 @@
 
 </form>
 
-
 Your new employee is: {{ employeeForm.value.name}},
 age: {{employeeForm.value.age}}
 with salary {{employeeForm.value.salary}} $ will be added to the system
+
 

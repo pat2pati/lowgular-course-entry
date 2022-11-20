@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {map, Observable} from 'rxjs';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { PersonModel } from '../model/person.model';
 import { CreateEmployeeModel } from '../model/create-employee.model';
 
@@ -13,8 +14,12 @@ export class EmployeeService {
     return this._httpClient.get<PersonModel[]>('assets/data/people.json');
   }
 
-  create(employees: CreateEmployeeModel): Observable<any> {
-    return this._httpClient.post('https://jsonplaceholder.typicode.com/posts', employees).pipe(map(_ => void 0));
+  create(employees: CreateEmployeeModel): Observable<void> {
+    return this._httpClient.post('https://dummy.restapiexample.com/api/v1/create', employees).pipe(map(_ => void 0));
+  }
+
+  delete(id: string): Observable<void> {
+    return this._httpClient.delete('https://dummy.restapiexample.com/api/v1/delete/' + id).pipe(map(_ => void 0));
   }
 }
 

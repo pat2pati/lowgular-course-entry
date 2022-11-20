@@ -20,7 +20,7 @@ export class EmployeeFormComponent {
   }
 
   onFormSubmitted(form: CreateEmployeeModel) {
-  this._employeeService.create(form);
+  this._employeeService.create({ name:form.name, age: form.age, salary: form.salary }).subscribe();
   }
 
 

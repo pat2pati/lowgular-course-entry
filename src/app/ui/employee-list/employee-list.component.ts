@@ -18,8 +18,10 @@ export class EmployeeListComponent {
 
   remove(id: string){
     this._employeeService.delete(id).subscribe();
+    alert('Users was successfully removed');
+    }
   }
 
-}
+
 
 
